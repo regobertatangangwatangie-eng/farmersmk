@@ -1,0 +1,7 @@
+com\farmersmk\grants\ProjectSubmissionRequest.class
+com\farmersmk\grants\GrantController.class
+com\farmersmk\grants\VoteRequest.class
+com\farmersmk\grants\VideoUploadRequest.class
+com\farmersmk\grants\GrantService.class
+com\farmersmk\grants\GrantsApplication.class
+com\farmersmk\grants\GrantRegistrationRequest.class

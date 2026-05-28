@@ -1,0 +1,6 @@
+com\farmersmk\socialmedia\ChatController.class
+com\farmersmk\socialmedia\ChatMessage.class
+com\farmersmk\socialmedia\ChatMessageRequest.class
+com\farmersmk\socialmedia\Invoice.class
+com\farmersmk\socialmedia\ChatService.class
+com\farmersmk\socialmedia\SocialMediaApplication.class

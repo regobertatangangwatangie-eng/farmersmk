@@ -1,0 +1,15 @@
+# Node
+node_modules/
+.env
+
+# Python
+__pycache__/
+.venv/
+
+# General
+.DS_Store
+Thumbs.db
+*.log
+
+# VSCode
+.vscode/

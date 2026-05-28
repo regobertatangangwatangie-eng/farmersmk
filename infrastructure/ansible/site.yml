@@ -1,0 +1,16 @@
+---
+- name: Configure all servers
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ensure latest updates
+      apt:
+        update_cache: yes
+        upgrade: dist
+      when: ansible_os_family == 'Debian'
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+      when: ansible_os_family == 'Debian'

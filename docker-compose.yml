@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  farmersmk-frontend-web:
+    build: ./farmersmk-frontend-web
+    ports:
+      - "3000:3000"
+  farmersmk-frontend-mobile:
+    build: ./farmersmk-frontend-mobile
+  farmersmk-marketplace-service:
+    build: ./farmersmk-marketplace-service
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db
+  farmersmk-payment-service:
+    build: ./farmersmk-payment-service
+    ports:
+      - "4001:4001"
+    depends_on:
+      - db
+  farmersmk-common-lib:
+    build: ./farmersmk-common-lib
+  farmersmk-android-app:
+    build: ./farmersmk-android-app
+  farmersmk-school:
+    build: ./farmersmk-school
+    depends_on:
+      - db
+  farmersmk-grants:
+    build: ./farmersmk-grants
+    depends_on:
+      - db
+  farmersmk-cryptocurrency-wallet:
+    build: ./farmersmk-cryptocurrency-wallet
+    depends_on:
+      - db
+  farmersmk-socialmedian:
+    build: ./farmersmk-socialmedian
+    depends_on:
+      - db
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: farmersmk
+      POSTGRES_PASSWORD: farmersmkpass
+      POSTGRES_DB: farmersmkdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./db-init/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+volumes:
+  db_data:

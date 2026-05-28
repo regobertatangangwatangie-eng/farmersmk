@@ -1,0 +1,7 @@
+com\farmersmk\auth\SignupRequest.class
+com\farmersmk\auth\UserRepository.class
+com\farmersmk\MarketplaceServiceApplication.class
+com\farmersmk\auth\AuthController.class
+com\farmersmk\auth\User.class
+com\farmersmk\auth\AuthService.class
+com\farmersmk\auth\SigninRequest.class
