@@ -1,12 +1,10 @@
-# GitHub Actions workflow for farmersmk-cryptocurrency-wallet
-name: Cryptocurrency Wallet CI
 
+name: Cryptocurrency Wallet CI
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -21,5 +19,5 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '11'
-      - name: Build with Maven
+      - name: Build and test with Maven
         run: mvn clean install
