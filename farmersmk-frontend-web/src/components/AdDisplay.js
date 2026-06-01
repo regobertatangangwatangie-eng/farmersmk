@@ -1,12 +1,39 @@
 import React, { useEffect, useState } from "react";
 
+const fallbackAd = {
+  type: "banner",
+  title: "Farmers MK Services",
+  content: "Explore school, marketplace, communication, grants, and wallet services from one place.",
+};
+
 export default function AdDisplay() {
   const [ad, setAd] = useState(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     fetch("/api/ads/random")
-      .then((res) => res.json())
-      .then(setAd);
+      .then(async (res) => {
+        const contentType = res.headers.get("content-type") || "";
+        if (!res.ok || !contentType.includes("application/json")) {
+          throw new Error("Ad API unavailable");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (isMounted) {
+          setAd(data);
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setAd(fallbackAd);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   if (!ad) return null;
